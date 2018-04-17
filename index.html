@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>NAB</title>
+    <script src="lib/react.min.js"></script>
+    <script src="lib/react-dom.min.js"></script>
+    <script src="lib/babel.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="lib/site.css">	
+ </head>
+  <body>
+    
+    <div class="container">
+    	<div id="app"></div>
+    </div>
+    
+    <script type="text/babel">
+	
+		class Dropdown extends React.Component{
+			constructor(props){
+				super(props);
+				this.state={"open":false};
+				this.list=['A','B','C'];
+				
+				this._onClickEvent = this._onClickEvent.bind(this);
+				
+			}	
+		
+			componentDidMount(){
+
+			}
+
+			componentDidUpdate(){
+
+			}			
+			
+			_onClickEvent () {
+		
+				console.log("GoodLuck");
+			}
+
+			render() {
+
+			  return (
+			  
+					<div className="form-group">
+						<label className="control-label mandatory">Test Dropdown</label>
+						
+						<div className="control-select">
+							<button className='dropdown-toggle'>
+								<span className="dropdown-value">A</span>
+							</button>												
+						</div>					
+						
+						<br />
+						<br />
+						
+						<div className="control-select">
+							<button className="dropdown-toggle open" onClick={this._onClickEvent}>
+								<span className="dropdown-value">Please select value</span>
+							</button>
+							
+							<div className="dropdown-list" ref='dropdownList'  >
+								<ul>
+									{this.list.map((item,i)=>(
+										<li key={i} >{item}</li>
+									))}
+								</ul>
+							</div>						
+						</div>							
+						
+					</div>
+
+			  );
+			}
+		}
+		ReactDOM.render(<Dropdown />, document.getElementById('app'));
+    </script>
+  </body>
+</html>
